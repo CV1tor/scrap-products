@@ -46,6 +46,7 @@ public class AmazonScrap {
                     "," +
                     result.findElement(By.cssSelector(".a-price-fraction")).getText();
 
+            System.out.println(name + " - " + price);
             products.add(new Product(name, price));
             Thread.sleep(1500);
         }
