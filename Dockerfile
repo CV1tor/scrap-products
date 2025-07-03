@@ -6,4 +6,5 @@ COPY . .
 
 RUN mvn clean package -DskipTests
 
-CMD ["java", "-jar", "target/selenium-study.jar"]
+
+CMD ["java", "-jar", "target/seleniumStudy-1.0-SNAPSHOT.jar"]
