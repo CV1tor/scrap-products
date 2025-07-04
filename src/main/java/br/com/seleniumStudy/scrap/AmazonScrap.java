@@ -2,8 +2,6 @@ package br.com.seleniumStudy.scrap;
 
 import br.com.seleniumStudy.model.Product;
 import io.github.cdimascio.dotenv.Dotenv;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +15,6 @@ public class AmazonScrap {
 
     static WebDriver driver = new ChromeDriver();
     static Dotenv dotenv = Dotenv.load();
-    static Logger logger = LogManager.getLogger();
 
     public static List<Product> findProducts(String query) throws InterruptedException {
         driver.get(dotenv.get("BASE_URL"));
