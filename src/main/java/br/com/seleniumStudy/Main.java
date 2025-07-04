@@ -5,7 +5,6 @@ import br.com.seleniumStudy.model.Product;
 import br.com.seleniumStudy.scrap.AmazonScrap;
 import br.com.seleniumStudy.service.CsvService;
 import br.com.seleniumStudy.service.EmailService;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
