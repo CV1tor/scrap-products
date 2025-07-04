@@ -51,6 +51,8 @@ public class AmazonScrap {
             Thread.sleep(1500);
         }
 
+        driver.quit();
+
         return products;
     }
 
