@@ -11,8 +11,8 @@ import java.util.Properties;
 public class EmailService {
     public static void sendEmail(File csv) throws MessagingException, IOException {
         Dotenv dotenv = Dotenv.load();
-        final String email = dotenv.get("USER_EMAIL") != null ? dotenv.get("USER_EMAIL") : System.getenv("USER_EMAIL");
-        final String password = dotenv.get("USER_PASSWORD") != null ? dotenv.get("USER_PASSWORD") : System.getenv("USER_PASSWORD");
+        final String email = dotenv.get("USER_EMAIL");
+        final String password = dotenv.get("USER_PASSWORD");
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
