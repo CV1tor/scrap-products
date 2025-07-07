@@ -32,7 +32,11 @@ public class AmazonScrap {
     }
 
     public static List<Product> findProducts(String query) throws InterruptedException {
-        driver.get(dotenv.get("BASE_URL"));
+        String baseUrl = System.getenv("BASE_URL");
+        if (baseUrl == null) {
+            baseUrl = Dotenv.load().get("BASE_URL");
+        }
+        driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 
@@ -41,7 +45,11 @@ public class AmazonScrap {
         searchBox.sendKeys(query, Keys.ENTER);
 
         List<WebElement> searchResults = driver.findElements(By.cssSelector(".a-section.a-spacing-small.puis-padding-left-small.puis-padding-right-small"));
-        int maxResultsConf = Integer.parseInt(dotenv.get("MAX_RESULTS"));
+        String max = System.getenv("MAX_RESULTS");
+        if (max == null) {
+            max = Dotenv.load().get("MAX_RESULTS");
+        }
+        int maxResultsConf = Integer.parseInt(max);
         int maxResults = Math.min(searchResults.size(), maxResultsConf);
 
         List<Product> products = new java.util.ArrayList<>();
