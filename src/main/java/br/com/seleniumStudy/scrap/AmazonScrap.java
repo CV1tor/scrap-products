@@ -7,14 +7,29 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 import java.util.List;
 
 public class AmazonScrap {
 
-    static WebDriver driver = new ChromeDriver();
+    private final static WebDriver driver;
     static Dotenv dotenv = Dotenv.load();
+
+    static {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new"); // usa o modo headless novo
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-extensions");
+
+        driver = new ChromeDriver(options);
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
     public static List<Product> findProducts(String query) throws InterruptedException {
         driver.get(dotenv.get("BASE_URL"));
