@@ -1,7 +1,6 @@
 package br.com.seleniumStudy.scrap;
 
 import br.com.seleniumStudy.model.Product;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,7 +14,6 @@ import java.util.List;
 public class AmazonScrap {
 
     private final static WebDriver driver;
-    static Dotenv dotenv = Dotenv.load();
 
     static {
         ChromeOptions options = new ChromeOptions();
@@ -32,7 +30,7 @@ public class AmazonScrap {
     }
 
     public static List<Product> findProducts(String query) throws InterruptedException {
-        driver.get(dotenv.get("BASE_URL"));
+        driver.get(System.getenv("BASE_URL"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 
@@ -41,7 +39,7 @@ public class AmazonScrap {
         searchBox.sendKeys(query, Keys.ENTER);
 
         List<WebElement> searchResults = driver.findElements(By.cssSelector(".a-section.a-spacing-small.puis-padding-left-small.puis-padding-right-small"));
-        int maxResultsConf = Integer.parseInt(dotenv.get("MAX_RESULTS"));
+        int maxResultsConf = Integer.parseInt(System.getenv("MAX_RESULTS"));
         int maxResults = Math.min(searchResults.size(), maxResultsConf);
 
         List<Product> products = new java.util.ArrayList<>();

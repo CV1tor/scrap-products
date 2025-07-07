@@ -1,7 +1,6 @@
 package br.com.seleniumStudy.service;
 
 import br.com.seleniumStudy.model.Product;
-import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +9,6 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class CsvService {
-    private static final Dotenv dotenv = Dotenv.load();
 
     public static String createCsv(List<Product> products) throws InterruptedException, IOException {
         String fileName = "products" + System.currentTimeMillis();
