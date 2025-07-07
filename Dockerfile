@@ -21,9 +21,10 @@ RUN CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+') && \
 # Configura o diretório de trabalho
 WORKDIR /app
 
-COPY . .
-
+# Copia o arquivo .env
 COPY .env ./
+
+COPY . .
 
 # Compila o projeto
 RUN mvn clean package -DskipTests
