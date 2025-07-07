@@ -23,6 +23,8 @@ WORKDIR /app
 
 COPY . .
 
+COPY .env ./
+
 # Compila o projeto
 RUN mvn clean package -DskipTests
 
